@@ -1,0 +1,64 @@
+package com.example.tw1;
+
+import android.graphics.Typeface;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+import android.graphics.Color;
+
+
+public class MainActivity extends AppCompatActivity {
+    float font = 30;
+    int textSize = 16; // Initial text size
+    int r = 0, b = 0, g = 0;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button changeFontButton = findViewById(R.id.changeFontButton);
+        changeFontButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeFont(view);
+            }
+        });
+    }
+
+    public void changeFont(View view) {
+        TextView helloTxt = findViewById(R.id.helloTxt);
+
+        // Check the current font and change it accordingly
+        if (helloTxt.getTypeface() != null && helloTxt.getTypeface().getStyle() == Typeface.NORMAL) {
+            helloTxt.setTypeface(Typeface.create("sans-serif", Typeface.BOLD_ITALIC));
+        } else {
+            helloTxt.setTypeface(Typeface.create("serif", Typeface.NORMAL));
+        }
+    }
+
+    public void changeTextSize(View view) {
+        TextView helloTxt = findViewById(R.id.helloTxt);
+        helloTxt.setTextSize(textSize);
+        textSize += 2; // Increase the text size by 2 each time
+    }
+
+    public void changeColor(View view) {
+        TextView helloTxt = findViewById(R.id.helloTxt);
+
+        int red[] = new int[] { 221, 66, 117, 230, 2, 210 };
+        int green[] = new int[] { 66, 245, 232, 11, 26, 120 };
+        int blue[] = new int[] { 245, 212, 9, 11, 41, 240 };
+        helloTxt.setTextColor(Color.rgb(red[r], green[g], blue[b]));
+        r++;
+        b++;
+        g++;
+        if (r > 5) {
+            r = 0;
+            g = 0;
+            b = 0;
+        }
+    }
+}
