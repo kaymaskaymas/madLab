@@ -20,18 +20,19 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Change Size"
         android:onClick="fontChange"
-        app:layout_constraintTop_toBottomOf="@+id/helloTxt"
+        android:text="Change Font"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.868"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/helloTxt" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Change Color"
         android:onClick="colorChange"
+        android:text="Change Color"
         app:layout_constraintTop_toBottomOf="@+id/helloTxt"
-        app:layout_constraintEnd_toStartOf="@+id/changeFontButton" />
+        tools:layout_editor_absoluteX="33dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
