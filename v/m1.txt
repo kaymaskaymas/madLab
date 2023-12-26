@@ -1,0 +1,136 @@
+Instructions:
+
+Creating a New project:
+1. Open Android Studio and then click on File -> New -> New project
+2. Then type the Application name as “ex.no.1″ and click Next. 
+3. Then select the Minimum SDK as shown below and click Next.
+4. Then select the Empty Activity and click Next. 
+5. Finally click Finish.
+6. It will take some time to build and load the project.
+7. After completion it will look as given below.
+
+Designing layout for the Android Application:
+1. Click on app -> res -> layout -> activity_main.xml.
+2. Now click on Text as shown below.
+3. Then delete the code which is there and type the code as given below.
+4. Now click on Design and your application will look as given below.
+5. So now the designing part is completed.
+
+Java Coding for the Android Application:
+1. Click on app -> java -> com.example.exno1 -> MainActivity.
+2. Then delete the code which is there and type the code as given below
+3. So now the Coding part is also completed.
+4. Now run the application to see the output.
+
+Changes in build.gradle.kts(compulsary):
+1. go to Project Tab to the left, navigate to Gradle Scripts
+2. in Gradle Scripts, double click on build.gradle.kts(Module:app)
+3. in the android {} code, change compileSdk to 34
+4. delete the dependencies {} code and write this instead:
+dependencies {
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.5.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+}
+5. click save changes and let the project download the dependencies.
+
+
+Activity.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:gravity="center"
+        android:text="Hello World!"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:text="Change font size"
+        android:textSize="25sp" />
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:text="Change color"
+        android:textSize="25sp" />
+</LinearLayout>
+
+
+MainActivity.java
+
+package com.example.exno1;
+import android.graphics.Color;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity{
+    int ch=1;
+    float font=30;
+    @Override
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        final TextView t= (TextView) findViewById(R.id.textView);
+        Button b1= (Button) findViewById(R.id.button1);
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                t.setTextSize(font);
+                font = font + 5;
+                if (font == 50)
+                    font = 30;
+            }
+        });
+        Button b2= (Button) findViewById(R.id.button2);
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (ch) {
+                    case 1:
+                        t.setTextColor(Color.RED);
+                        break;
+                    case 2:
+                        t.setTextColor(Color.GREEN);
+                        break;
+                    case 3:
+                        t.setTextColor(Color.BLUE);
+                        break;
+                    case 4:
+                        t.setTextColor(Color.CYAN);
+                        break;
+                    case 5:
+                        t.setTextColor(Color.YELLOW);
+                        break;
+                    case 6:
+                        t.setTextColor(Color.MAGENTA);
+                        break;
+                }
+                ch++;
+                if (ch == 7)
+                    ch = 1;
+            }
+        });
+    }
+}
