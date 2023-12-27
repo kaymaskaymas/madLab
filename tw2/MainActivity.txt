@@ -17,8 +17,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        EditText e1=(EditText) findViewById(R.id.editTextText);
-        EditText e2=(EditText) findViewById(R.id.editTextText2);
+        EditText e1=(EditText) findViewById(R.id.nameTxt);
+        EditText e2=(EditText) findViewById(R.id.usnTxt);
         Button b1=(Button) findViewById(R.id.button);
         Spinner s=(Spinner) findViewById(R.id.spinner);
         String arr[]={"CSE","ECE","EEE","ME"};
